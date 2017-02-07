@@ -1,0 +1,26 @@
+{
+  "name": "node-bundle",
+  "version": "1.0.0",
+  "description": "Node workouts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sivailango/node-bundle.git"
+  },
+  "keywords": [
+    "Node",
+    "Learning"
+  ],
+  "author": "Sivailango",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sivailango/node-bundle/issues"
+  },
+  "homepage": "https://github.com/sivailango/node-bundle#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}

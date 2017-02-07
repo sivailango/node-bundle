@@ -1,0 +1,18 @@
+### npm init
+Give the basic information about project which will create package.json 
+
+### Pre-req
+
+````
+npm install nodemon -g
+````
+
+### npm dependencies
+
+````
+npm install express --save
+http://expressjs.com/
+
+
+
+````

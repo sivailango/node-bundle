@@ -1,6 +1,14 @@
 var express = require('express');
 var app = express();
 
+var options = {
+	debug: true
+};
+
+var seqAudit = require('sequelize-audit')(options);
+ 
+//seqAudit.init();
+
 app.get('/:userId', function(req, res) {
 	console.log(req.params.userId);
 	res.json('Hello World!');

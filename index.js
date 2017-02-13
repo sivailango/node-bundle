@@ -1,20 +1,55 @@
 var express = require('express');
 var app = express();
 
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+var _ = require('lodash');
+
+/*
 var options = {
 	debug: true
 };
 
 var seqAudit = require('sequelize-audit')(options);
+*/
  
 //seqAudit.init();
 
-app.get('/:userId', function(req, res) {
-	console.log(req.params.userId);
-	res.json('Hello World!');
+app
+	.use(express.static(__dirname + '/client'))
+	.get('/', function(req, res) {
+		res.sendfile(__dirname + '/client/index.html');
+	});
+
+var users = [];
+
+io.on('connection', function(socket) {
+
+	console.log('a user connected - ' + socket.id);
+
+	users.push(socket.id);
+
+	socket.on('users', function() {
+		io.emit('users', users);
+	});
+
+	socket.on('chat message', function(msg) {
+		io.emit('chat message', msg);
+	});
+	
+	socket.on('disconnect', function() {
+		_.remove(users, function(n) {
+			return n === socket.id;
+		});
+
+		io.emit('users', users);
+
+	});
+
 });
 
-app.listen(3000, function() {
+server.listen(3000, function() {
 	console.log('Example app listening on port 3000!')
 });
 

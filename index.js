@@ -4,6 +4,8 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+var Sequelize = require('sequelize'); 
+
 var _ = require('lodash');
 
 /*
@@ -22,6 +24,7 @@ app
 		res.sendfile(__dirname + '/client/index.html');
 	});
 
+/*
 var users = [];
 
 io.on('connection', function(socket) {
@@ -48,6 +51,7 @@ io.on('connection', function(socket) {
 	});
 
 });
+*/
 
 server.listen(3000, function() {
 	console.log('Example app listening on port 3000!')

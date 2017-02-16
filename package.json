@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/sivailango/node-bundle#readme",
   "dependencies": {
+    "async": "^2.1.4",
     "config": "^1.25.1",
     "express": "^4.14.1",
+    "fs": "0.0.1-security",
     "lodash": "^4.17.4",
     "sequelize": "^3.30.2",
     "socket.io": "^1.7.2"

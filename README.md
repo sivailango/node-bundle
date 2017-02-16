@@ -12,7 +12,9 @@ npm install nodemon -g
 ````
 npm install express --save
 http://expressjs.com/
-
-
-
 ````
+
+### TODO modules
+
+* Logger - `https://www.npmjs.com/package/bunyan`
+* Node Config - `https://github.com/lorenwest/node-config`

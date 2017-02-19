@@ -1,0 +1,17 @@
+{
+    "db" : {
+        "config" : {
+            "username" : "postgres",
+            "password" : "12345"
+        },
+        "options" : {
+            "host" : "127.0.0.1",
+            "post" : 5432,
+            "dialect" : "postgres",
+            "logging": false,
+            "pool" : {
+                
+            }
+        }
+    }
+}

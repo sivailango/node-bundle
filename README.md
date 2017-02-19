@@ -16,5 +16,5 @@ http://expressjs.com/
 
 ### TODO modules
 
-* Logger - `https://www.npmjs.com/package/bunyan`
-* Node Config - `https://github.com/lorenwest/node-config`
+* [Logger](https://www.npmjs.com/package/bunyan)
+* [Node Config](https://github.com/lorenwest/node-config)

@@ -18,3 +18,4 @@ http://expressjs.com/
 
 * [Logger](https://www.npmjs.com/package/bunyan)
 * [Node Config](https://github.com/lorenwest/node-config)
+* [Sequelize - Load JSON](https://www.npmjs.com/package/sequelize-fixtures)

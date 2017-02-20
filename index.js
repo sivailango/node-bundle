@@ -1,16 +1,20 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 var async = require('async');
+var config = require('config');
 
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('sequelize', 'postgres', '');
+var models = require('./server/models/sequelize');
 
 var _ = require('lodash');
 
+app.use(bodyParser.json());
+
+/*
 var options = {
 	debug: true
 };
@@ -18,6 +22,7 @@ var options = {
 var seqAudit = require('sequelize-audit')(options);
 
 seqAudit.authenticate();
+*/
 
 require('./server/routes/index')(app);
 
@@ -76,8 +81,22 @@ io.on('connection', function(socket) {
 });
 */
 
-server.listen(3000, function() {
-	console.log('Example app listening on port 3000!')
+models.sequelize
+    .authenticate()
+    .then(function(err) {
+        console.log('DB Connection connected');
+    })
+    .catch(function(err) {
+        if(err) {
+            console.log(err.message);
+        }
+    });
+
+models.sequelize.sync().then(function() {
+    server.listen(3000, function() {
+		console.log('App listening on port : ' + 3000);
+    });
 });
+
 
 

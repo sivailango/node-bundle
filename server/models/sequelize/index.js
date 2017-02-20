@@ -26,7 +26,18 @@ Object.keys(db).forEach(function(modelName) {
 	}
 });
 
+var options = {
+	debug: true
+};
+
+var seqAudit = require('sequelize-audit')(sequelize, options);
+
+//seqAudit.authenticate();
+seqAudit.defineModels();
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+
 
 module.exports = db;

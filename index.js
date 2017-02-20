@@ -14,16 +14,6 @@ var _ = require('lodash');
 
 app.use(bodyParser.json());
 
-/*
-var options = {
-	debug: true
-};
-
-var seqAudit = require('sequelize-audit')(options);
-
-seqAudit.authenticate();
-*/
-
 require('./server/routes/index')(app);
 
 app.use(function(req, res, next) {

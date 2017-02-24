@@ -29,10 +29,12 @@ module.exports = function(sequelize, DataTypes) {
             type : DataTypes.JSON
         }
     }, {
-
+        classMethods: {
+            
+        }
     });
 
-    // User.hasPaperTrail();
+    User.hasPaperTrail();
 
     return User;
 

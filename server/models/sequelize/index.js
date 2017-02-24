@@ -12,6 +12,15 @@ var sequelize = new Sequelize(dbConfig.config.database, dbConfig.config.username
 
 var db = {};
 
+var options = {
+	debug: true
+};
+
+var seqAudit = require('sequelize-audit')(sequelize, options);
+
+//seqAudit.authenticate();
+seqAudit.defineModels(db);
+
 fs.readdirSync(__dirname)
 	.filter(function(file) {
 		return (file.indexOf('.') !== 0) && (file !== 'index.js');
@@ -25,19 +34,8 @@ Object.keys(db).forEach(function(modelName) {
 		db[modelName].associate(db);
 	}
 });
-
-var options = {
-	debug: true
-};
-
-var seqAudit = require('sequelize-audit')(sequelize, options);
-
-//seqAudit.authenticate();
-seqAudit.defineModels();
-
+                  
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-
 
 module.exports = db;

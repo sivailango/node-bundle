@@ -12,6 +12,7 @@ module.exports = function(app) {
         })
         .post(function(req, res) {
             models.user.create(req.body).then(function(user) {
+                console.log(user);
                 res.send({
                     success: true,
                     message: 'User created!',
@@ -39,7 +40,7 @@ module.exports = function(app) {
         models.user.update({firstName : req.body.firstName}, {individualHooks: true, where: {id : req.params.userId}}).then(function(result) {
             res.send({
                 success: true,
-                message: 'User created!'
+                message: result
             });
         });
     });

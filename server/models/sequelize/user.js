@@ -29,12 +29,24 @@ module.exports = function(sequelize, DataTypes) {
             type : DataTypes.JSON
         }
     }, {
+        hooks: {
+            beforeUpdate: function(user, options) {
+                console.log(JSON.stringify(user))
+                //console.dir(JSON.stringify(options))
+            },
+            afterUpdate: function(user, options) {
+                console.log(JSON.stringify(user))
+                //console.dir(JSON.stringify(options))
+            }
+        }
+    },
+    {
         classMethods: {
-            
+
         }
     });
 
-    User.hasPaperTrail();
+    //User.hasPaperTrail();
 
     return User;
 

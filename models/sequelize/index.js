@@ -16,11 +16,6 @@ var options = {
 	debug: true
 };
 
-var seqAudit = require('sequelize-audit')(sequelize, options);
-
-//seqAudit.authenticate();
-seqAudit.defineModels(db);
-
 fs.readdirSync(__dirname)
 	.filter(function(file) {
 		return (file.indexOf('.') !== 0) && (file !== 'index.js');

@@ -2,19 +2,14 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
-var async = require('async');
 var config = require('config');
 
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-var models = require('./server/models/sequelize');
-
-var _ = require('lodash');
+var models = require('./models/sequelize');
 
 app.use(bodyParser.json());
-
-require('./server/routes/index')(app);
 
 app.use(function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -23,53 +18,13 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.get('/api/v1/users', function(req, res) {
+require('./routes/index')(app);
+
+app.get('/', function(req, res) {
 	res.json({
-		message: 'Hello'
+		message: 'Welcome to Node Bundle'
 	})
 });
-
-/*
-app
-	.use(express.static(__dirname + '/client'))
-	.get('/', function(req, res) {
-		res.sendfile(__dirname + '/client/index.html');
-	});
-
-// Error handler
-app.use(function(req, res, next) {
-	res.status(404).send('Sorry cant find that!');
-});
-*/
-
-/*
-var users = [];
-
-io.on('connection', function(socket) {
-
-	console.log('a user connected - ' + socket.id);
-
-	users.push(socket.id);
-
-	socket.on('users', function() {
-		io.emit('users', users);
-	});
-
-	socket.on('chat message', function(msg) {
-		io.emit('chat message', msg);
-	});
-
-	socket.on('disconnect', function() {
-		_.remove(users, function(n) {
-			return n === socket.id;
-		});
-
-		io.emit('users', users);
-
-	});
-
-});
-*/
 
 models.sequelize
     .authenticate()
@@ -83,8 +38,8 @@ models.sequelize
     });
 
 models.sequelize.sync().then(function() {
-    server.listen(3000, function() {
-		console.log('App listening on port : ' + 3000);
+    server.listen(3001, function() {
+		console.log('App listening on port : ' + 3001);
     });
 });
 

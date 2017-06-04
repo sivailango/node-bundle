@@ -12,7 +12,6 @@ module.exports = function(app) {
 
     app.route('/api/v1/users')
         .get(function(req, res) {
-            console.log('adasd');
             res.json(users); 
         })
         .post(function(req, res) {

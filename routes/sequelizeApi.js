@@ -1,6 +1,6 @@
 'use strict';
 
-var models = require('../models/sequelize');
+var models = require('../models/sequelize/models');
 
 module.exports = function(app) {
 
@@ -12,7 +12,6 @@ module.exports = function(app) {
         })
         .post(function(req, res) {
             models.user.create(req.body).then(function(user) {
-                console.log(user);
                 res.send({
                     success: true,
                     message: 'User created!',
@@ -21,7 +20,7 @@ module.exports = function(app) {
             });
         })
         .put(function(req, res) {
-            models.user.upsert(req.body, {individualHooks: true}).then(function(user) {
+            models.user.upsert(req.body).then(function(user) {
                 console.log(user)
                 res.send({
                     success: true,
@@ -37,7 +36,11 @@ module.exports = function(app) {
     });
 
     app.put('/api/v1/sequelize/updateUsers/:userId', function(req, res) {
-        models.user.update({firstName : req.body.firstName}, {individualHooks: true, where: {id : req.params.userId}}).then(function(result) {
+        models.user.update({firstName : req.body.firstName}, {
+            where: {
+                id : req.params.userId
+            }
+        }).then(function(result) {
             res.send({
                 success: true,
                 message: result

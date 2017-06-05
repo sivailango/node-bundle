@@ -1,5 +1,3 @@
-var Temporal = require('sequelize-temporal');
-
 module.exports = function(sequelize, DataTypes) {
 
     var User = sequelize.define('user', {
@@ -27,6 +25,9 @@ module.exports = function(sequelize, DataTypes) {
         },
         preferences : {
             type : DataTypes.JSON
+        },
+        address: {
+            type : DataTypes.STRING
         }
     },
     {
@@ -34,10 +35,6 @@ module.exports = function(sequelize, DataTypes) {
 
         }
     });
-
-    // Temporal(User, sequelize);
-
-    //User.hasPaperTrail();
 
     return User;
 

@@ -7,7 +7,7 @@ var config = require('config');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-var models = require('./models/sequelize');
+var models = require('./models/sequelize/models');
 
 app.use(bodyParser.json());
 

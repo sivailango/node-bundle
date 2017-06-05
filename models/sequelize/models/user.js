@@ -1,4 +1,4 @@
-'use strict';
+var Temporal = require('sequelize-temporal');
 
 module.exports = function(sequelize, DataTypes) {
 
@@ -28,23 +28,14 @@ module.exports = function(sequelize, DataTypes) {
         preferences : {
             type : DataTypes.JSON
         }
-    }, {
-        hooks: {
-            beforeUpdate: function(user, options) {
-                console.log(JSON.stringify(user))
-                //console.dir(JSON.stringify(options))
-            },
-            afterUpdate: function(user, options) {
-                console.log(JSON.stringify(user))
-                //console.dir(JSON.stringify(options))
-            }
-        }
     },
     {
         classMethods: {
 
         }
     });
+
+    // Temporal(User, sequelize);
 
     //User.hasPaperTrail();
 
